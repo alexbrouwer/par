@@ -2,13 +2,13 @@
     "name": "par/par",
     "autoload": {
         "psr-4": {
-            "PAR\\Core\\": "packages/core/src",
-            "PAR\\Time\\": "packages/time/src"
+            "PAR\\First\\": "packages/first/src",
+            "PAR\\Second\\": "packages/second/src"
         }
     },
     "replace": {
-        "par/core": "self.version",
-        "par/time": "self.version"
+        "par/first": "self.version",
+        "par/second": "self.version"
     },
     "description": "PHP Addition Repository (PAR)",
     "license": "MIT",

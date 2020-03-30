@@ -7,5 +7,5 @@ parameters:
   
   # for "split" command
   directories_to_repositories:
-    packages/core: 'file:///app/gitlocal/core.git'
-    packages/time: 'file:///app/gitlocal/time.git'
+    packages/first: 'file:///app/gitlocal/first.git'
+    packages/second: 'file:///app/gitlocal/second.git'
