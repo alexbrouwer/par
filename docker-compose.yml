@@ -1,0 +1,19 @@
+version: '3.7'
+
+networks:
+  backend:
+    driver: ${NETWORKS_DRIVER-bridge}
+
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: .docker/workspace/Dockerfile
+      args:
+        - TARGET_PHP_VERSION=${PHP_VERSION-7.4}
+        - TZ=${TIMEZONE-UTC}
+    volumes:
+      - .:/app
+    tty: true
+    networks:
+      - backend

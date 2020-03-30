@@ -1,0 +1,15 @@
+{
+    "name": "par/par",
+    "description": "PHP Addition Repository (PAR)",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "require": {
+        "php": "^7.2"
+    }
+}
