@@ -13,6 +13,7 @@ services:
         - TARGET_PHP_VERSION=${PHP_VERSION-7.4}
         - TZ=${TIMEZONE-UTC}
     volumes:
+      - ~/.ssh:/home/app/.ssh
       - .:/app
     tty: true
     networks:
