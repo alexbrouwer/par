@@ -14,6 +14,7 @@ services:
         - TZ=${TIMEZONE-UTC}
     volumes:
       - ~/.ssh:/home/app/.ssh
+      - ~/.gitconfig:/home/app/.gitconfig
       - .:/app
     tty: true
     networks:

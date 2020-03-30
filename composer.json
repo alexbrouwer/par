@@ -12,11 +12,6 @@
     },
     "description": "PHP Addition Repository (PAR)",
     "license": "MIT",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    },
     "require": {
         "php": "^7.4"
     },
