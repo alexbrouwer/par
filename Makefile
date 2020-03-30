@@ -1,6 +1,9 @@
 DOCKER_COMPOSE_FILE=./docker-compose.yml
 DOCKER_COMPOSE=docker-compose -f $(DOCKER_COMPOSE_FILE)
 
+build: docker-init
+	$(DOCKER_COMPOSE) build
+
 workspace: docker-init
 	$(DOCKER_COMPOSE) run workspace sh
 
