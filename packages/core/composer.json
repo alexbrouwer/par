@@ -1,0 +1,19 @@
+{
+    "name": "par/core",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "PAR\\Core\\": "src"
+        }
+    }
+}

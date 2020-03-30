@@ -1,15 +1,29 @@
 {
     "name": "par/par",
+    "autoload": {
+        "psr-4": {
+            "PAR\\Core\\": "packages/core/src",
+            "PAR\\Time\\": "packages/time/src"
+        }
+    },
+    "replace": {
+        "par/core": "self.version",
+        "par/time": "self.version"
+    },
     "description": "PHP Addition Repository (PAR)",
     "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
     },
     "require": {
-        "php": "^7.2"
-    }
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "symplify/monorepo-builder": "^7.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
