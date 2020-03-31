@@ -48,7 +48,7 @@ COPY ${SERVICE_DIR}/config/php/conf.d/*  /usr/local/etc/php/conf.d/
 
 # install composer
 RUN apk update \
-	&& apk add --no-cache git curl bash openssh-client \
+	&& apk add --no-cache git git-subtree curl bash openssh-client \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /tmp/*
 
