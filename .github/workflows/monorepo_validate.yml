@@ -16,4 +16,4 @@ jobs:
           php-version: 7.4
 
       - run: composer install --no-progress
-      - run: /vendor/bin/monorepo-builder validate
+      - run: vendor/bin/monorepo-builder validate
