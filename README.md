@@ -1,9 +1,5 @@
 # PHP Additional Repository
 
-[![Coverage Status](https://coveralls.io/repos/github/php-addition-repository/par/badge.svg?branch=master)](https://coveralls.io/github/php-addition-repository/par?branch=master)
+![Coveralls github](https://img.shields.io/coveralls/github/github/php-addition-repository/par?style=for-the-badge)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/php-addition-repository/par?sort=semver&style=for-the-badge)
 
-## TODO
-
-[ ] Add badge to readme for build
-[ ] Add badge to readme for semantic version
-[ ] Investigate sonarcube analysis
