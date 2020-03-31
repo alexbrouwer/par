@@ -1,6 +1,6 @@
 {
     "name": "par/core",
-    "description": "Core structures and helpers",
+    "description": "PHP Addition Repository - Core structures and helpers",
     "type": "library",
     "authors": [
         {
