@@ -4,4 +4,6 @@
 
 ## TODO
 
-[ ] Add badges to readme for build, versioning, sonarcube 
+[ ] Add badge to readme for build
+[ ] Add badge to readme for semantic version
+[ ] Investigate sonarcube analysis
