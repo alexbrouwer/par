@@ -1,3 +1,6 @@
+# IDE
 .idea
+
+# Code
 /vendor
 /.docker/.env
