@@ -1,0 +1,45 @@
+{
+    "name": "par/core",
+    "description": "Core structures and helpers",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alex Brouwer",
+            "email": "brouwer.alexander@gmail.com",
+            "role": "lead"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "PAR\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PARTest\\Core\\": "test/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+        "php-ds/php-ds": "^1.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "roave/security-advisories": "dev-master"
+    }
+}

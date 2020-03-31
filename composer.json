@@ -1,21 +1,33 @@
 {
+    "autoload-dev": {
+        "psr-4": {
+            "PARTest\\Core\\": "packages/core/test/"
+        }
+    },
     "name": "par/par",
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        }
+    },
     "autoload": {
         "psr-4": {
-            "PAR\\First\\": "packages/first/src",
-            "PAR\\Second\\": "packages/second/src"
+            "PAR\\Core\\": "packages/core/src/"
         }
     },
     "replace": {
-        "par/first": "self.version",
-        "par/second": "self.version"
+        "par/core": "self.version"
     },
     "description": "PHP Addition Repository (PAR)",
     "license": "MIT",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "ext-json": "*",
+        "php-ds/php-ds": "^1.2"
     },
     "require-dev": {
+        "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
         "symplify/monorepo-builder": "^7.2"
     },
