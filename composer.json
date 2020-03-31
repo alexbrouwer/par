@@ -32,5 +32,11 @@
         "symplify/monorepo-builder": "^7.2"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "check": [
+            "@test"
+        ],
+        "test": "phpunit"
+    }
 }
