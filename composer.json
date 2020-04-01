@@ -29,6 +29,7 @@
     "require-dev": {
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
+        "spatie/phpunit-watcher": "^1.22",
         "symplify/monorepo-builder": "^7.2"
     },
     "minimum-stability": "dev",

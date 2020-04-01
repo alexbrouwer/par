@@ -4,6 +4,7 @@ parameters:
     data_to_append:
         require-dev:
             symplify/monorepo-builder: '^7.2'
+            spatie/phpunit-watcher: "^1.22"
 
     # for "split" command
     directories_to_repositories:

@@ -1,0 +1,4 @@
+watch:
+    directories:
+        - packages
+    fileMask: '*.php'
