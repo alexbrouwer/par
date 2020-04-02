@@ -1,0 +1,6 @@
+parameters:
+  authors_to_ignore: ['alexbrouwer']
+  names_to_urls:
+    "PAR/Core": 'https://github.com/php-addition-repository/core/'
+  package_aliases:
+    Core: 'Par/Core'
