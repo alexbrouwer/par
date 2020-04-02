@@ -23,9 +23,11 @@ final class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface {
         }
 
         $newHeadline = $this->createNewHeadline( $version );
+        $newLinkLine = $this->createNewLinkLine( $version );
 
         $changelogFileContent = FileSystem::read( $changelogFilePath );
         $changelogFileContent = Strings::replace( $changelogFileContent, '#\#\# Unreleased#', '## ' . $newHeadline );
+        $changelogFileContent .= $newLinkLine . PHP_EOL;
 
         FileSystem::write( $changelogFilePath, $changelogFileContent );
     }
@@ -38,5 +40,9 @@ final class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface {
 
     private function createNewHeadline ( Version $version ): string {
         return sprintf( '[%s] - %s', $version->getVersionString(), ( new DateTime() )->format( 'Y-m-d' ) );
+    }
+
+    private function createNewLinkLine ( Version $version ): string {
+        return sprintf( '[%s]: https://github.com/php-addition-repository/par/releases/tag/%s', $version->getVersionString(), $version->getVersionString() );
     }
 }
