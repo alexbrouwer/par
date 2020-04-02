@@ -10,8 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- [#6] Feature/core 0.2.0, Thanks to [@alexbrouwer]
-- [#4] Custom monorepo-builder release workflow, Thanks to [@alexbrouwer]
+### Changed
+
+- [#6] Feature/core 0.2.0
+- [#4] Custom monorepo-builder release workflow
 
 <!-- dumped content end -->
 
@@ -19,9 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `PAR/Core` package
+- Added [PAR/Core] package
 
 [#6]: https://github.com/php-addition-repository/par/pull/6
 [#4]: https://github.com/php-addition-repository/par/pull/4
 [0.1.0]: https://github.com/php-addition-repository/par/releases/tag/0.1.0
-[@alexbrouwer]: https://github.com/alexbrouwer
+[PAR/Core]: https://github.com/php-addition-repository/core/
