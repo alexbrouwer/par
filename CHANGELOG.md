@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#5] Changelog updates
 - [#6] Feature/core 0.2.0
 - [#4] Custom monorepo-builder release workflow
 
@@ -27,3 +28,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#4]: https://github.com/php-addition-repository/par/pull/4
 [0.1.0]: https://github.com/php-addition-repository/par/releases/tag/0.1.0
 [PAR/Core]: https://github.com/php-addition-repository/core/
+[#5]: https://github.com/php-addition-repository/par/pull/5
