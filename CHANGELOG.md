@@ -8,7 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- dumped content start -->
 
-## Unreleased
+## [0.2.0] - 2020-04-02
+
+### All
+
+#### Changed
+
+- [#5] Changelog updates
+
+<!-- dumped content end -->
+
+<!-- dumped content start -->
+
+## [0.2.0] - 2020-04-02
 
 ### Changed
 
@@ -29,3 +41,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.0]: https://github.com/php-addition-repository/par/releases/tag/0.1.0
 [PAR/Core]: https://github.com/php-addition-repository/core/
 [#5]: https://github.com/php-addition-repository/par/pull/5
+[0.2.0]: https://github.com/php-addition-repository/par/compare/0.1.0...0.2.0
