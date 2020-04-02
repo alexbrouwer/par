@@ -34,8 +34,6 @@
         "symplify/changelog-linker": "^7.2",
         "symplify/monorepo-builder": "^7.2"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "check": [
             "@test"
@@ -44,5 +42,7 @@
         "pre-release": [
             "monorepo-builder validate"
         ]
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
