@@ -31,14 +31,18 @@
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
         "spatie/phpunit-watcher": "^1.22",
+        "symplify/changelog-linker": "^7.2",
         "symplify/monorepo-builder": "^7.2"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "check": [
             "@test"
         ],
-        "test": "phpunit"
-    }
+        "test": "phpunit",
+        "pre-release": [
+            "monorepo-builder validate"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

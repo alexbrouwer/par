@@ -7,9 +7,8 @@ namespace App\Monorepo\ReleaseWorker;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
-use Throwable;
 
-final class TagVersionReleaseWorker implements ReleaseWorkerInterface {
+final class ChangelogLinkerLinkReleaseWorker implements ReleaseWorkerInterface {
 
     /**
      * @var ProcessRunner
@@ -21,20 +20,16 @@ final class TagVersionReleaseWorker implements ReleaseWorkerInterface {
     }
 
     public function getPriority (): int {
-        return 400;
+        return 499;
     }
 
     public function work ( Version $version ): void {
-        try {
-            $this->processRunner->run( 'git add . && git commit -m "prepare release" && git push origin master' );
-        } catch ( Throwable $throwable ) {
-            // nothing to commit
-        }
-
-        $this->processRunner->run( 'git tag ' . $version->getVersionString() );
+        $this->processRunner->run(
+            'vendor/bin/changelog-linker link'
+        );
     }
 
     public function getDescription ( Version $version ): string {
-        return sprintf( 'Add local tag "%s"', $version->getVersionString() );
+        return 'Update CHANGELOG.md links';
     }
 }
