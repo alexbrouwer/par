@@ -10,23 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2020-04-02
 
-### All
-
-#### Changed
-
-- [#5] Changelog updates
-
-<!-- dumped content end -->
-
-<!-- dumped content start -->
-
-## [0.2.0] - 2020-04-02
-
 ### Changed
 
-- [#5] Changelog updates
-- [#6] Feature/core 0.2.0
-- [#4] Custom monorepo-builder release workflow
+- [#5] [All] Changelog updates
+- [#6] [All] Feature/core 0.2.0
+- [#4] [All] Custom monorepo-builder release workflow
 
 <!-- dumped content end -->
 
