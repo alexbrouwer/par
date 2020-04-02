@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: morrisoncole/pr-lint-action@v1.0.0
         with:
-          # Match pull request titles in the form "[Package] - Message"
-          title-regex: '^\[[A-Z][a-z]{3,}\] - .+'
-          on-failed-regex-comment: "Pull request title must be in de form: \"[Package] - Message\""
+          # Match pull request titles in the form "[Package] Pull request description"
+          title-regex: '^\[[A-Z][a-z]{3,}\] .+'
+          on-failed-regex-comment: "Pull request title must be in de form: \"[Package] Pull request description\""
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
