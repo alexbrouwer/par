@@ -1,4 +1,4 @@
-name: 'PR title'
+name: 'PR lint'
 on:
   pull_request:
     types:
@@ -9,7 +9,7 @@ on:
       - synchronize
 
 jobs:
-  publish:
+  pr_title_lint:
     runs-on: ubuntu-18.04
     steps:
       - uses: morrisoncole/pr-lint-action@v1.0.0
