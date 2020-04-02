@@ -16,6 +16,6 @@ jobs:
       - uses: morrisoncole/pr-lint-action@v1.0.0
         with:
           # Match pull request titles in the form "[Package] - Message"
-          title-regex: "\[[A-Z][a-z]{3,}\] - .+"
+          title-regex: '^\[[A-Z][a-z]{3,}\] - .+'
           on-failed-regex-comment: "Pull request title must be in de form: \"[Package] - Message\""
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
