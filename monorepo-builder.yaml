@@ -1,6 +1,5 @@
 parameters:
     package_alias_format: '<major>.<minor>.x-dev'
-    enable_default_release_workers: false
 
     # for "merge" command
     data_to_append:
@@ -16,10 +15,5 @@ parameters:
         packages/core: 'git@github.com:php-addition-repository/core.git'
 
 services:
-    App\Monorepo\ReleaseWorker\AddTagToChangelogReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\PushNextDevReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\PushTagReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\SetNextMutualDependenciesReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\TagVersionReleaseWorker: ~
-    App\Monorepo\ReleaseWorker\UpdateBranchAliasReleaseWorker: ~
+    App\Monorepo\ReleaseWorker\ChangelogLinkerDumpReleaseWorker: ~
+    App\Monorepo\ReleaseWorker\ChangelogLinkerLinkReleaseWorker: ~

@@ -8,7 +8,7 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 
-final class PushTagReleaseWorker implements ReleaseWorkerInterface {
+final class ChangelogLinkerDumpReleaseWorker implements ReleaseWorkerInterface {
 
     /**
      * @var ProcessRunner
@@ -20,14 +20,16 @@ final class PushTagReleaseWorker implements ReleaseWorkerInterface {
     }
 
     public function getPriority (): int {
-        return 300;
+        return 501;
     }
 
     public function work ( Version $version ): void {
-        $this->processRunner->run( 'git push --tags' );
+        $this->processRunner->run(
+            'vendor/bin/changelog-linker dump-merges --in-packages --in-categories'
+        );
     }
 
     public function getDescription ( Version $version ): string {
-        return sprintf( 'Push "%s" tag to remote repository', $version->getVersionString() );
+        return 'Update CHANGELOG.md with merged PRs';
     }
 }
