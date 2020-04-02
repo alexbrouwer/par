@@ -40,6 +40,11 @@
         "check": [
             "@test"
         ],
-        "test": "phpunit"
+        "test": "phpunit",
+        "pre-release": [
+            "monorepo-builder validate",
+            "changelog-linker dump-merges --in-packages --in-categories",
+            "changelog-linker link"
+        ]
     }
 }
