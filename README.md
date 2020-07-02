@@ -1,5 +1,6 @@
 # PHP Additional Repository
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/php-addition-repository/par/Unit%20tests?label=Unit%20Tests&style=for-the-badge)
 ![Coveralls github](https://img.shields.io/coveralls/github/php-addition-repository/par?style=for-the-badge)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/php-addition-repository/par?sort=semver&style=for-the-badge)
 
