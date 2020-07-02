@@ -12,7 +12,7 @@ Bla bla
 
 ## Credits
 
-- [Rudi Theunissen](https://github.com/rtheunissen) and [Joe Watkins](https://github.com/krakjoe) for their work on the pecl [Data Structures](https://github.com/php-ds/ext-ds) package which in my opinion should be made available in the PHP core!
+- To [Rudi Theunissen](https://github.com/rtheunissen) and [Joe Watkins](https://github.com/krakjoe) for their work on the pecl [Data Structures](https://github.com/php-ds/ext-ds) package which in my opinion should be made available in the PHP core!
 
 ## Licence
 
