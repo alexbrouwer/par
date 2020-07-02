@@ -13,9 +13,9 @@ jobs:
       - run: git fetch --depth=100000 origin
 
       - uses: shivammathur/setup-php@v1
-          with:
-            php-version: 7.4
-            coverage: pcov
+        with:
+          php-version: 7.4
+          coverage: pcov
 
       - name: Cache PHP dependencies
         uses: actions/cache@v1

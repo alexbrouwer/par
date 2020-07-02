@@ -20,9 +20,9 @@ jobs:
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - uses: shivammathur/setup-php@v1
-          with:
-            php-version: ${{ matrix.php }}
-            coverage: none
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
 
       - name: Cache PHP dependencies
         uses: actions/cache@v1
