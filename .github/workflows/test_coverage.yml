@@ -1,19 +1,21 @@
-name: Code Coverage
+name: Test Coverage
 
 on:
-  pull_request: null
   push:
     branches:
       - master
 
 jobs:
-  code_coverage:
+  test_coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: 7.4
+      - run: git fetch --depth=100000 origin
+
+      - uses: shivammathur/setup-php@v1
+          with:
+            php-version: 7.4
+            coverage: pcov
 
       - name: Cache PHP dependencies
         uses: actions/cache@v1
@@ -25,7 +27,7 @@ jobs:
       - run: |
           vendor/bin/phpunit --coverage-clover build/logs/clover.xml
           # coveralls.io
-          wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+          wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
           php php-coveralls.phar --verbose
         env:
           COVERALLS_REPO_TOKEN: 'aGNZHzlw8nPDYMznWOS7DVbfaN6BRxBnn'
