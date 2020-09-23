@@ -78,8 +78,8 @@ USER ${APP_USER}
 # speedup composer installs
 RUN composer global require --no-suggest --no-interaction hirak/prestissimo
 
-# make sure PATH contains all composer scripts
-ENV PATH="~/.composer/vendor/bin:${PATH}"
+# make sure PATH contains all global composer scripts
+ENV PATH="/home/${APP_USER}/.composer/vendor/bin:${PATH}"
 
 # make sure PATH contains all composer scripts
 ENV PATH="./vendor/bin:${PATH}"
