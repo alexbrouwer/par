@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace PARTest\Core\PHPUnit\Constraint;
+namespace PARTest\Core\Unit\PHPUnit\Constraint;
 
 use PAR\Core\Hashable;
 use PAR\Core\PHPUnit\Constraint\HashableEquals;

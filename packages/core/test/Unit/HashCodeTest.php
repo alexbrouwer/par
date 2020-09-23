@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace PARTest\Core;
+namespace PARTest\Core\Unit;
 
 use PAR\Core\HashCode;
 use PARTest\Core\Fixtures\GenericHashable;

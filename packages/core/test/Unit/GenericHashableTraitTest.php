@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace PARTest\Core;
+namespace PARTest\Core\Unit;
 
 use PARTest\Core\Fixtures\GenericHashable;
 use PHPUnit\Framework\TestCase;

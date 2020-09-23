@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace PARTest\Core\Values;
+namespace PARTest\Core\Unit\Values;
 
 use PAR\Core\Values;
 use PARTest\Core\Traits\ResourceTrait;
