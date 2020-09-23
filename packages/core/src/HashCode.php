@@ -1,6 +1,6 @@
 <?php
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace PAR\Core;
 
@@ -9,7 +9,8 @@ use TypeError;
 /**
  * Collection of static methods to easily transform a value of any type to an 32 bit integer representation.
  */
-final class HashCode {
+final class HashCode
+{
 
     public const MAX_RECURSION_DEPTH = 10;
 
@@ -21,32 +22,119 @@ final class HashCode {
      *
      * @return int The resulting hash
      */
-    public static function forAny ( $value, int $maxDepth = self::MAX_RECURSION_DEPTH ): int {
-        $type = gettype( $value );
-        switch ( $type ) {
+    public static function forAny($value, int $maxDepth = self::MAX_RECURSION_DEPTH): int
+    {
+        $type = gettype($value);
+        switch ($type) {
             case 'boolean':
-                return self::forBool( $value );
+                return self::forBool($value);
             case 'integer':
-                return static::forInt( $value );
+                return static::forInt($value);
             case 'double':
-                return self::forFloat( $value );
+                return self::forFloat($value);
             case 'string':
-                return static::forString( $value );
+                return static::forString($value);
             case 'array':
-                return static::forArray( $value, $maxDepth );
+                return static::forArray($value, $maxDepth);
             case 'object':
-                return self::forObject( $value );
+                return self::forObject($value);
             case 'resource':
             case 'resource (closed)':
-                return static::forResource( $value );
+                return static::forResource($value);
             case 'NULL':
                 return 0;
             case 'unknown type':
                 // "unknown type" is an official return value from `gettype`
             default:
-                // This case exists because we use a switch and just in case a new type is introduced that is not (yet) supported here.
-                throw new TypeError( sprintf( 'Unknown type "%s"', $type ) );
+                // This case exists because we use a switch and just in case a new type is introduced that is not (yet)
+                // supported here.
+                throw new TypeError(sprintf('Unknown type "%s"', $type));
         }
+    }
+
+    /**
+     * Transform a boolean to integer hash.
+     *
+     * @param bool $value The boolean to transform
+     *
+     * @return int The resulting hash
+     */
+    public static function forBool(bool $value): int
+    {
+        return $value ? 1231 : 1237;
+    }
+
+    /**
+     * Transform an integer to integer hash.
+     *
+     * @param int $value The integer to transform
+     *
+     * @return int The resulting hash
+     */
+    public static function forInt(int $value): int
+    {
+        $max = 2 ** 31 - 1;
+        $min = (2 ** 31) * -1;
+        if ($value <= $max && $value >= $min) {
+            return $value;
+        }
+
+        $hash = ($value ^ ($value >> 32));
+
+        return static::handleOverflow($hash);
+    }
+
+    /**
+     * Handles overflowing of an integer
+     *
+     * @param int $value
+     *
+     * @return int
+     */
+    private static function handleOverflow(int $value): int
+    {
+        $bits = 32;
+        $sign_mask = 1 << $bits - 1;
+        $clamp_mask = ($sign_mask << 1) - 1;
+
+        if ($value & $sign_mask) {
+            return ((~$value & $clamp_mask) + 1) * -1;
+        }
+
+        return $value & $clamp_mask;
+    }
+
+    /**
+     * Transform a float to integer hash.
+     *
+     * @param float $value The float to transform
+     *
+     * @return int The resulting hash
+     */
+    public static function forFloat(float $value): int
+    {
+        $packed = pack('g', $value);
+        [, $number] = unpack('V', $packed);
+
+        return static::handleOverflow($number);
+    }
+
+    /**
+     * Transform a string to a hash.
+     *
+     * @param string $value The string to transform
+     *
+     * @return int The resulting hash
+     */
+    public static function forString(string $value): int
+    {
+        $hash = 0;
+        $length = strlen($value);
+        for ($i = 0; $i < $length; $i++) {
+            $hash = static::handleOverflow(31 * $hash + ord($value[$i]));
+        }
+
+        return $hash;
     }
 
     /**
@@ -57,73 +145,30 @@ final class HashCode {
      *
      * @return int The resulting hash
      */
-    public static function forArray ( array $values, int $maxDepth = self::MAX_RECURSION_DEPTH ): int {
-        if ( $maxDepth === 0 || empty( $values ) ) {
+    public static function forArray(array $values, int $maxDepth = self::MAX_RECURSION_DEPTH): int
+    {
+        if ($maxDepth === 0 || empty($values)) {
             return 0;
         }
 
         $hashes = array_map(
-            static function ( $value ) use ( $maxDepth ) {
-                return static::forAny( $value, $maxDepth - 1 );
+            static function ($value) use ($maxDepth) {
+                return static::forAny($value, $maxDepth - 1);
             },
             $values
         );
 
-        if ( array_values( $values ) !== $values ) {
-            $hashes[] = static::forArray( array_keys( $values ), 1 );
+        if (array_values($values) !== $values) {
+            $hashes[] = static::forArray(array_keys($values), 1);
         }
 
         return array_reduce(
             $hashes,
-            static function ( int $previous, int $hash ): int {
-                return static::handleOverflow( $previous + $hash );
+            static function (int $previous, int $hash): int {
+                return static::handleOverflow($previous + $hash);
             },
             0
         );
-    }
-
-    /**
-     * Transform a boolean to integer hash.
-     *
-     * @param bool $value The boolean to transform
-     *
-     * @return int The resulting hash
-     */
-    public static function forBool ( bool $value ): int {
-        return $value ? 1231 : 1237;
-    }
-
-    /**
-     * Transform a float to integer hash.
-     *
-     * @param float $value The float to transform
-     *
-     * @return int The resulting hash
-     */
-    public static function forFloat ( float $value ): int {
-        $packed = pack( 'g', $value );
-        [ , $number ] = unpack( 'V', $packed );
-
-        return static::handleOverflow( $number );
-    }
-
-    /**
-     * Transform an integer to integer hash.
-     *
-     * @param int $value The integer to transform
-     *
-     * @return int The resulting hash
-     */
-    public static function forInt ( int $value ): int {
-        $max = 2 ** 31 - 1;
-        $min = ( 2 ** 31 ) * -1;
-        if ( $value <= $max && $value >= $min ) {
-            return $value;
-        }
-
-        $hash = ( $value ^ ( $value >> 32 ) );
-
-        return static::handleOverflow( $hash );
     }
 
     /**
@@ -133,12 +178,13 @@ final class HashCode {
      *
      * @return int The resulting hash
      */
-    public static function forObject ( object $value ): int {
-        if ( $value instanceof Hashable ) {
-            return static::forAny( $value->hash() );
+    public static function forObject(object $value): int
+    {
+        if ($value instanceof Hashable) {
+            return static::forAny($value->hash());
         }
 
-        return static::forInt( spl_object_id( $value ) );
+        return static::forInt(spl_object_id($value));
     }
 
     /**
@@ -148,48 +194,19 @@ final class HashCode {
      *
      * @return int The resulting hash
      */
-    public static function forResource ( $value ): int {
+    public static function forResource($value): int
+    {
         // PHP does not (yet) support a argument type for resource AND handles closed resource differently.
-        if ( Values::typeOf( $value ) !== 'resource' ) {
-            throw new TypeError( sprintf( 'Argument 1 passed to %s() must be of the type resource, %s given', __FUNCTION__, Values::typeOf( $value ) ) );
+        if (Values::typeOf($value) !== 'resource') {
+            throw new TypeError(
+                sprintf(
+                    'Argument 1 passed to %s() must be of the type resource, %s given',
+                    __FUNCTION__,
+                    Values::typeOf($value)
+                )
+            );
         }
 
-        return static::forInt( (int) $value );
-    }
-
-    /**
-     * Transform a string to a hash.
-     *
-     * @param string $value The string to transform
-     *
-     * @return int The resulting hash
-     */
-    public static function forString ( string $value ): int {
-        $hash = 0;
-        $length = strlen( $value );
-        for ( $i = 0; $i < $length; $i++ ) {
-            $hash = static::handleOverflow( 31 * $hash + ord( $value[ $i ] ) );
-        }
-
-        return $hash;
-    }
-
-    /**
-     * Handles overflowing of an integer
-     *
-     * @param int $value
-     *
-     * @return int
-     */
-    private static function handleOverflow ( int $value ): int {
-        $bits = 32;
-        $sign_mask = 1 << $bits - 1;
-        $clamp_mask = ( $sign_mask << 1 ) - 1;
-
-        if ( $value & $sign_mask ) {
-            return ( ( ~$value & $clamp_mask ) + 1 ) * -1;
-        }
-
-        return $value & $clamp_mask;
+        return static::forInt((int)$value);
     }
 }

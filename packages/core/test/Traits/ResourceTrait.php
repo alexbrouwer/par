@@ -1,33 +1,36 @@
 <?php
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace PARTest\Core\Traits;
 
 use RuntimeException;
 
-trait ResourceTrait {
+trait ResourceTrait
+{
 
     /**
      * @return resource
      */
-    protected function createResource () {
-        $resource = fopen( 'php://memory', 'rb' );
-        if ( is_resource( $resource ) ) {
-            return $resource;
-        }
+    protected function createClosedResource()
+    {
+        $resource = $this->createResource();
 
-        throw new RuntimeException( 'Cannot create resource "php://memory"' );
+        fclose($resource);
+
+        return $resource;
     }
 
     /**
      * @return resource
      */
-    protected function createClosedResource () {
-        $resource = $this->createResource();
+    protected function createResource()
+    {
+        $resource = fopen('php://memory', 'rb');
+        if (is_resource($resource)) {
+            return $resource;
+        }
 
-        fclose( $resource );
-
-        return $resource;
+        throw new RuntimeException('Cannot create resource "php://memory"');
     }
 }
