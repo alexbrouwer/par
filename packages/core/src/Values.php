@@ -166,32 +166,18 @@ final class Values
         }
 
         $nativeType = gettype($value);
-        switch ($nativeType) {
-            case 'boolean':
-                $type = 'bool';
-                break;
-            case 'integer':
-                $type = 'int';
-                break;
-            case 'double':
-                $type = 'float';
-                break;
-            case 'resource':
-            case 'resource (closed)':
-                $type = 'resource';
-                break;
-            case 'NULL':
-                return 'null';
-            case 'array':
-            case 'string':
-                $type = $nativeType;
-                break;
-            default:
-                $type = 'unknown';
-                break;
-        }
+        $map = [
+            'boolean' => 'bool',
+            'integer' => 'int',
+            'double' => 'float',
+            'resource' => 'resource',
+            'resource (closed)' => 'resource',
+            'NULL' => 'null',
+            'array' => 'array',
+            'string' => 'string',
+        ];
 
-        return $type;
+        return $map[$nativeType] ?? 'unknown';
     }
 
     /**
