@@ -1,14 +1,14 @@
 <?php
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace PARTest\Core\Fixtures;
 
 use PAR\Core\Hashable;
 use PAR\Core\Traits;
 
-class GenericHashable implements Hashable {
-
+class GenericHashable implements Hashable
+{
     use Traits\GenericHashable;
 
     /**
@@ -19,14 +19,16 @@ class GenericHashable implements Hashable {
     /**
      * @param int|string|bool|null|float $hash
      */
-    public function __construct ( $hash ) {
+    public function __construct($hash)
+    {
         $this->hash = $hash;
     }
 
     /**
      * @inheritDoc
      */
-    public function hash () {
+    public function hash()
+    {
         return $this->hash;
     }
 }
