@@ -12,7 +12,7 @@ GROUP=${2}
 DIR=${3}
 
 if [[ ! -d "${DIR}" ]]; then
-    mkdir -p ${DIR}
+    mkdir -p "${DIR}"
 fi
-chown ${USER}:${GROUP} ${DIR}
-chmod 775 ${DIR}
+chown "${USER}":"${GROUP}" "${DIR}"
+chmod 775 "${DIR}"
