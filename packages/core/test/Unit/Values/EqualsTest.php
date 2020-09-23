@@ -17,12 +17,12 @@ class EqualsTest extends TestCase {
         $b = 'string';
 
         $a = $this->createMock( Hashable::class );
-        $a->expects( $this->once() )
+        $a->expects( self::once() )
           ->method( 'equals' )
           ->with( $b )
           ->willReturn( false );
 
-        $this->assertFalse( Values::equals( $a, $b ) );
+        self::assertFalse( Values::equals( $a, $b ) );
     }
 
     /**
@@ -32,23 +32,23 @@ class EqualsTest extends TestCase {
         $b = 'string';
 
         $a = $this->createMock( Hashable::class );
-        $a->expects( $this->once() )
+        $a->expects( self::once() )
           ->method( 'equals' )
           ->with( $b )
           ->willReturn( false );
 
-        $this->assertFalse( Values::equals( $b, $a ) );
+        self::assertFalse( Values::equals( $b, $a ) );
     }
 
     /**
      * @test
      */
     public function itCanDetermineEqualityBetweenNonHashables (): void {
-        $this->assertTrue( Values::equals( 'foo', 'foo' ) );
+        self::assertTrue( Values::equals( 'foo', 'foo' ) );
 
-        $this->assertFalse( Values::equals( 'foo', 'bar' ) );
-        $this->assertFalse( Values::equals( null, 'bar' ) );
-        $this->assertFalse( Values::equals( 1, 1.0 ) );
+        self::assertFalse( Values::equals( 'foo', 'bar' ) );
+        self::assertFalse( Values::equals( null, 'bar' ) );
+        self::assertFalse( Values::equals( 1, 1.0 ) );
     }
 
 }

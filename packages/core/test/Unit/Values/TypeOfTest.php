@@ -49,6 +49,6 @@ final class TypeOfTest extends TestCase {
      * @param string $expectedType
      */
     public function itCanDetermineTypeOfValue ( $value, string $expectedType ): void {
-        $this->assertSame( $expectedType, Values::typeOf( $value ) );
+        self::assertSame( $expectedType, Values::typeOf( $value ) );
     }
 }

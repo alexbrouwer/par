@@ -22,12 +22,12 @@ final class HashTest extends TestCase {
         $expectedHash = microtime( true );
 
         $hashable = $this->createMock( Hashable::class );
-        $hashable->expects( $this->once() )
+        $hashable->expects( self::once() )
                  ->method( 'hash' )
                  ->with()
                  ->willReturn( $expectedHash );
 
-        $this->assertEquals( $expectedHash, Values::hash( $hashable ) );
+        self::assertEquals( $expectedHash, Values::hash( $hashable ) );
     }
 
     /**
@@ -50,7 +50,7 @@ final class HashTest extends TestCase {
      * @param bool|float|int|string|null $scalarOrNullValue
      */
     public function itReturnsValueForScalarAndNullValue ( $scalarOrNullValue ): void {
-        $this->assertEquals( $scalarOrNullValue, Values::hash( $scalarOrNullValue ) );
+        self::assertEquals( $scalarOrNullValue, Values::hash( $scalarOrNullValue ) );
     }
 
     /**
@@ -80,7 +80,7 @@ final class HashTest extends TestCase {
      * @param int                                     $expectedHashCode
      */
     public function itReturnsHashCodeForNonScalarOrNullValue ( $nonScalarValue, int $expectedHashCode ): void {
-        $this->assertEquals( $expectedHashCode, Values::hash( $nonScalarValue ) );
+        self::assertEquals( $expectedHashCode, Values::hash( $nonScalarValue ) );
     }
 
 }

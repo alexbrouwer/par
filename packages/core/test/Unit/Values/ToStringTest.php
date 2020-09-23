@@ -21,12 +21,12 @@ final class ToStringTest extends TestCase {
         $expected = 'custom';
 
         $hashable = $this->createMock( Hashable::class );
-        $hashable->expects( $this->once() )
+        $hashable->expects( self::once() )
                  ->method( '__toString' )
                  ->with()
                  ->willReturn( $expected );
 
-        $this->assertEquals( $expected, Values::toString( $hashable ) );
+        self::assertEquals( $expected, Values::toString( $hashable ) );
     }
 
     /**
@@ -74,6 +74,6 @@ final class ToStringTest extends TestCase {
      * @param string $expectedString
      */
     public function itCanTransformNativeValueToString ( $value, string $expectedString ): void {
-        $this->assertEquals( $expectedString, Values::toString( $value ) );
+        self::assertEquals( $expectedString, Values::toString( $value ) );
     }
 }

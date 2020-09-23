@@ -16,7 +16,7 @@ class GenericHashableTraitTest extends TestCase {
     public function itIsEqualToSelf (): void {
         $instance = new GenericHashable( 'hash' );
 
-        $this->assertTrue( $instance->equals( $instance ) );
+        self::assertTrue( $instance->equals( $instance ) );
     }
 
     /**
@@ -26,8 +26,8 @@ class GenericHashableTraitTest extends TestCase {
         $instance = new GenericHashable( 'hash' );
         $other = new GenericHashable( 'hash' );
 
-        $this->assertNotSame( $other, $instance );
-        $this->assertTrue( $instance->equals( $other ) );
+        self::assertNotSame( $other, $instance );
+        self::assertTrue( $instance->equals( $other ) );
     }
 
     /**
@@ -37,7 +37,7 @@ class GenericHashableTraitTest extends TestCase {
         $instance = new GenericHashable( 'hash' );
         $other = new GenericHashable( 'other-hash' );
 
-        $this->assertFalse( $instance->equals( $other ) );
+        self::assertFalse( $instance->equals( $other ) );
     }
 
     /**
@@ -47,7 +47,7 @@ class GenericHashableTraitTest extends TestCase {
         $instance = new GenericHashable( 'hash' );
         $other = new stdClass();
 
-        $this->assertFalse( $instance->equals( $other ) );
+        self::assertFalse( $instance->equals( $other ) );
     }
 
     /**
@@ -57,7 +57,7 @@ class GenericHashableTraitTest extends TestCase {
         $instance = new GenericHashable( null );
         $other = null;
 
-        $this->assertFalse( $instance->equals( $other ) );
+        self::assertFalse( $instance->equals( $other ) );
     }
 
     /**
@@ -70,7 +70,7 @@ class GenericHashableTraitTest extends TestCase {
 
         };
 
-        $this->assertFalse( $instance->equals( $other ) );
+        self::assertFalse( $instance->equals( $other ) );
     }
 
     /**
@@ -83,7 +83,7 @@ class GenericHashableTraitTest extends TestCase {
         };
         $other = new GenericHashable( $hash );
 
-        $this->assertFalse( $instance->equals( $other ) );
+        self::assertFalse( $instance->equals( $other ) );
     }
 
     /**
@@ -93,7 +93,7 @@ class GenericHashableTraitTest extends TestCase {
         $hash = 'hash';
         $instance = new GenericHashable( $hash );
 
-        $this->assertSame(
+        self::assertSame(
             sprintf( '%s@%s', get_class( $instance ), $hash ),
             (string) $instance
         );

@@ -35,7 +35,7 @@ final class HashableEqualsTest extends TestCase {
     public function itCanEvaluateOther ( Hashable $object, $other, bool $expectedResult ): void {
 
         $constraint = new HashableEquals( $object );
-        $this->assertSame( $expectedResult, $constraint->evaluate( $other, '', true ) );
+        self::assertSame( $expectedResult, $constraint->evaluate( $other, '', true ) );
     }
 
     /**

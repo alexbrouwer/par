@@ -119,7 +119,7 @@ final class HashCodeTest extends TestCase {
      * @param int    $expectedHash
      */
     public function itCanCreateHashForStringValue ( string $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forString( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forString( $value ) );
     }
 
     /**
@@ -130,7 +130,7 @@ final class HashCodeTest extends TestCase {
      * @param int  $expectedHash
      */
     public function itCanCreateHashForBooleanValue ( bool $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forBool( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forBool( $value ) );
     }
 
     /**
@@ -141,7 +141,7 @@ final class HashCodeTest extends TestCase {
      * @param int   $expectedHash
      */
     public function itCanCreateHashForFloatValue ( float $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forFloat( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forFloat( $value ) );
     }
 
     /**
@@ -152,7 +152,7 @@ final class HashCodeTest extends TestCase {
      * @param int      $expectedHash
      */
     public function itCanCreateHashForResourceValue ( $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forResource( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forResource( $value ) );
     }
 
     /**
@@ -163,7 +163,7 @@ final class HashCodeTest extends TestCase {
      * @param int    $expectedHash
      */
     public function itCanCreateHashForObjectValue ( object $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forObject( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forObject( $value ) );
     }
 
     /**
@@ -174,7 +174,7 @@ final class HashCodeTest extends TestCase {
      * @param int $expectedHash
      */
     public function itCanCreateHashForIntValue ( int $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forInt( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forInt( $value ) );
     }
 
     /**
@@ -185,6 +185,6 @@ final class HashCodeTest extends TestCase {
      * @param int   $expectedHash
      */
     public function itCanCreateHashForAnyValue ( $value, int $expectedHash ): void {
-        $this->assertEquals( $expectedHash, HashCode::forAny( $value ) );
+        self::assertEquals( $expectedHash, HashCode::forAny( $value ) );
     }
 }
