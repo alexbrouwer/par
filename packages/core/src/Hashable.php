@@ -1,6 +1,6 @@
 <?php
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace PAR\Core;
 
@@ -13,20 +13,21 @@ use PAR\Core\Traits;
  * that two objects that are considered equal by an implicit definition would not be treated as equal because they are
  * not the same instance.
  */
-interface Hashable extends \Ds\Hashable {
+interface Hashable extends \Ds\Hashable
+{
 
     /**
      * Determines if two objects should be considered equal. Both objects will
      * be instances of the same class but may not be the same instance.
      *
-     * @see Traits\GenericHashable for an implementation
-     *
      * @param mixed $other The referenced value with which to compare
      *
      * @return bool True if this object is the same as the other argument
      *
+     * @see Traits\GenericHashable for an implementation
+     *
      */
-    public function equals ( $other ): bool;
+    public function equals($other): bool;
 
     /**
      * Produces a scalar or null value to be used as the object's hash, which determines
@@ -35,16 +36,16 @@ interface Hashable extends \Ds\Hashable {
      *
      * @return bool|float|int|string|null
      */
-    public function hash ();
+    public function hash();
 
     /**
      * Returns a string representation of the object. In general, the `toString` method returns a string that
      * "textually represents" this object. The result should be a concise but informative representation that
      * is easy for a person to read.
      *
-     * @see Traits\GenericHashable for an implementation
      * @return string
      *
+     * @see Traits\GenericHashable for an implementation
      */
-    public function __toString (): string;
+    public function __toString(): string;
 }

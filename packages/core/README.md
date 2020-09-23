@@ -2,7 +2,7 @@
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/php-addition-repository/core?sort=semver&style=for-the-badge)
 
-This package is part of the PHP Additional Repository. Additional documentation can be found at **TODO**.
+This package is part of the PHP Additional Repository. Documentation can be found at **TODO**.
 
 ## Installation
 

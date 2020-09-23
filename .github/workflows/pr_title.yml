@@ -1,13 +1,13 @@
 name: 'PR lint'
 on:
   pull_request:
-    types: [opened, edited, reopened, synchronize]
+    types: [ opened, edited, reopened ]
 
 jobs:
   pr_title_lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: morrisoncole/pr-lint-action@v1.1.1
+      - uses: morrisoncole/pr-lint-action@v1.3.0
         with:
           # Match pull request titles in the form "[Package] Pull request description"
           title-regex: '^\[[A-Z][a-z]{2,}\]\s.+'
