@@ -5,12 +5,34 @@
     <file>packages</file>
     <file>src</file>
 
+    <!-- inherit rules from: -->
     <rule ref="PSR12"/>
 
+    <!-- Do not allow the long array notation  -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <!-- Enforce the declaration of strict_types -->
+    <rule ref="Generic.PHP.RequireStrictTypes"/>
+
+    <!-- Allow newlines before or after an operator -->
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Do not allow lines with only spaces or multiple lines -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Lines can be 180 chars long, but never show errors -->
     <rule ref="Generic.Files.LineLength">
         <properties>
-            <property name="lineLimit" value="120"/>
-            <property name="absoluteLineLimit" value="180"/>
+            <property name="lineLimit" value="180"/>
+            <property name="absoluteLineLimit" value="0"/>
         </properties>
     </rule>
 </ruleset>
