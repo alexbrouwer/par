@@ -4,6 +4,7 @@
 [![Coveralls github](https://img.shields.io/coveralls/github/php-addition-repository/par?style=for-the-badge)]((https://coveralls.io/github/php-addition-repository/par?branch=master))
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/php-addition-repository/par?sort=semver&style=for-the-badge)](https://github.com/php-addition-repository/par/tags)
 [![Codacy Grade](https://img.shields.io/codacy/grade/9c324a236cd5478ea683468469f0fc14?style=for-the-badge)](https://app.codacy.com/gh/php-addition-repository/par/dashboard)
+[![Codacy Coverage](https://img.shields.io/codacy/coverage/9c324a236cd5478ea683468469f0fc14?style=for-the-badge)](https://app.codacy.com/gh/php-addition-repository/par/dashboard)
 
 Documentation can be found at **TODO**.
 
