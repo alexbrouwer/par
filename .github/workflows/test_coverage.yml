@@ -22,7 +22,7 @@ jobs:
         with:
           path: vendor
           key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
-      - run: composer install --no-progress
+      - run: composer install --no-progress --no-suggests --prefer-dist
 
       - run: |
           vendor/bin/phpunit --coverage-clover build/logs/clover.xml
