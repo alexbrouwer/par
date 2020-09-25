@@ -6,6 +6,7 @@
     <file>src</file>
 
     <!-- inherit rules from: -->
+    <rule ref="PSR2"/>
     <rule ref="PSR12"/>
 
     <!-- Do not allow the long array notation  -->
@@ -13,6 +14,9 @@
 
     <!-- Enforce the declaration of strict_types -->
     <rule ref="Generic.PHP.RequireStrictTypes"/>
+
+    <!-- Do not support error supression -->
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
 
     <!-- Allow newlines before or after an operator -->
     <rule ref="Squiz.WhiteSpace.OperatorSpacing">
@@ -25,6 +29,21 @@
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
         <properties>
             <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Do not allow a space after cast -->
+    <rule ref="Generic.Formatting.SpaceAfterCast">
+        <properties>
+            <property name="spacing" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Handle complexity -->
+    <rule ref="Generic.Metrics.CyclomaticComplexity">
+        <properties>
+            <property name="complexity" value="10"/>
+            <property name="absoluteComplexity" value="15"/>
         </properties>
     </rule>
 
