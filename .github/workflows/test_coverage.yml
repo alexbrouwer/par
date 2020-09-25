@@ -15,19 +15,20 @@ jobs:
       - uses: shivammathur/setup-php@v1
         with:
           php-version: 7.4
-          coverage: pcov
+          coverage: xdebug
 
       - name: Cache PHP dependencies
         uses: actions/cache@v1
         with:
           path: vendor
           key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
-      - run: composer install --no-progress --no-suggests --prefer-dist
+      - run: composer install --prefer-dist --no-progress --no-suggest
 
       - run: |
           vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+          cat build/logs/clover.xml | wc -l
           # coveralls.io
-          wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+          wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
           php php-coveralls.phar --verbose
         env:
-          COVERALLS_REPO_TOKEN: 'aGNZHzlw8nPDYMznWOS7DVbfaN6BRxBnn'
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
