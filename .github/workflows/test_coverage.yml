@@ -27,6 +27,7 @@ jobs:
 
       - run: |
           vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+          cat build/logs/clover.xml | wc -l
           # coveralls.io
           wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
           php php-coveralls.phar --verbose
