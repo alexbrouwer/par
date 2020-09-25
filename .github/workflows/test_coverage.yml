@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - bugfix/coveralls-io
 
 jobs:
   test_coverage:
