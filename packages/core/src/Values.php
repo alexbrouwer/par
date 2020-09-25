@@ -205,9 +205,8 @@ final class Values
     }
 
     /**
-     * Produces a scalar or null value to be used as the value's hash, which determines
-     * where it goes in the hash table. While this value does not have to be
-     * unique, values which are equal must have the same hash value.
+     * Produces a scalar or null value to be used as the value's hash, which determines where it goes in the hash
+     * table. While this value does not have to be unique, values which are equal must have the same hash value.
      *
      * @param mixed $value The value to produce a hash for
      *
