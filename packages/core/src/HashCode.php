@@ -27,17 +27,17 @@ final class HashCode
         $type = gettype($value);
         switch ($type) {
             case 'boolean':
-                return self::forBool($value);
+                return static::forBool($value);
             case 'integer':
                 return static::forInt($value);
             case 'double':
-                return self::forFloat($value);
+                return static::forFloat($value);
             case 'string':
                 return static::forString($value);
             case 'array':
                 return static::forArray($value, $maxDepth);
             case 'object':
-                return self::forObject($value);
+                return static::forObject($value);
             case 'resource':
             case 'resource (closed)':
                 return static::forResource($value);
