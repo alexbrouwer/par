@@ -38,5 +38,10 @@ jobs:
           # coveralls.io
           wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
           php php-coveralls.phar --verbose
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: build/logs/clover.xml
+
