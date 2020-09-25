@@ -1,20 +1,23 @@
-name: Test Coverage
+name: Tests
 
 on:
+  pull_request:
   push:
-    branches:
-      - master
 
 jobs:
-  test_coverage:
+  tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ '7.4' ]
+
+    name: Run tests for PHP ${{ matrix.php }}
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --depth=100000 origin
 
       - uses: shivammathur/setup-php@v1
         with:
-          php-version: 7.4
+          php-version: ${{ matrix.php }}
           coverage: xdebug
 
       - name: Cache PHP dependencies
@@ -22,11 +25,16 @@ jobs:
         with:
           path: vendor
           key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
+
       - run: composer install --prefer-dist --no-progress --no-suggest
 
-      - run: |
-          vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-          cat build/logs/clover.xml | wc -l
+      - name: PHPUnit
+        run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+      - name: Coveralls.io
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: |
           # coveralls.io
           wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
           php php-coveralls.phar --verbose
