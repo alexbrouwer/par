@@ -31,4 +31,5 @@ jobs:
           wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
           php php-coveralls.phar --verbose
         env:
-          COVERALLS_REPO_TOKEN: 'aGNZHzlw8nPDYMznWOS7DVbfaN6BRxBnn'
+          COVERALLS_RUN_LOCALLY: 1
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
