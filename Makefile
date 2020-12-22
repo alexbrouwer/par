@@ -17,3 +17,7 @@ watch-tests: docker-init
 
 .PHONY: docker-init
 docker-init: .docker/.env
+
+docs:
+	docker run --rm -v $(PWD):/data -v $(PWD)/data/api-template:/opt/phpdoc/data/templates/api-template phpdoc/phpdoc:3 run
+

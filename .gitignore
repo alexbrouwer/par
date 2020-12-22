@@ -3,4 +3,5 @@
 
 # Code
 /vendor
+/build
 /.docker/.env
