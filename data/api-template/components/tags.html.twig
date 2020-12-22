@@ -1,0 +1,18 @@
+{% set tags = node.tags|filter((v,k) => k not in ['var', 'param', 'property', 'property-read', 'property-write', 'method', 'return', 'package', 'api']) %}
+
+{% if tags|length > 0 %}<p>
+    <strong>Tags</strong>
+    <dl class="row">
+        {% for name,seriesOfTag in tags %}
+            {% for tag in seriesOfTag %}
+                <dt class="col-sm-3">
+                    {{ name }}
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tag }}
+                </dd>
+            {% endfor %}
+        {% endfor %}
+    </dl>
+    </p>
+{% endif %}

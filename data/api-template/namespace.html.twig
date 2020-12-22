@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        {% include 'components/namespace-header.html.twig' %}
+
+        {% if packages|default([]) is not empty %}
+            <div class="card mb-4">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Packages</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for child in packages %}
+                        <tr>
+                            <td>
+                                <a href="{{ link(child) }}">
+                                    {% for parent in breadcrumbs(child) %}{{ parent.name }}\{% endfor %}{{ child.name }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+        {% if namespaces|default([]) is not empty %}
+            <div class="card mb-4">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Namespaces</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for child in namespaces %}
+                        <tr>
+                            <td>
+                                <a href="{{ link(child) }}">
+                                    {% for parent in breadcrumbs(child) %}{{ parent.name }}\{% endfor %}{{ child.name }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if node.interfaces is not empty %}
+            <div class="card mb-4">
+                <table class="table table-striped">
+                    <colgroup>
+                        <col class="w-25"/>
+                        <col/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">Interfaces</th>
+                        <th scope="col">Summary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for child in node.interfaces %}
+                        <tr>
+                            <td>
+                                <a href="{{ link(child) }}">
+                                    {{ child.name }}
+                                </a>
+                            </td>
+                            <td>{{ child.summary }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if node.classes is not empty %}
+            <div class="card mb-4 table-responsive">
+                <table class="table table-striped">
+                    <colgroup>
+                        <col class="w-25"/>
+                        <col/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">Classes</th>
+                        <th scope="col">Summary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for child in node.classes %}
+                        <tr>
+                            <td>
+                                <a href="{{ link(child) }}">
+                                    {{ child.name }}
+                                </a>
+                            </td>
+                            <td>{{ child.summary }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if node.traits is not empty %}
+            <div class="card mb-4">
+                <table class="table table-striped">
+                    <colgroup>
+                        <col class="w-25"/>
+                        <col/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">Traits</th>
+                        <th scope="col">Summary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for child in node.traits %}
+                        <tr>
+                            <td>
+                                <a href="{{ link(child) }}">
+                                    {{ child.name }}
+                                </a>
+                            </td>
+                            <td>{{ child.summary }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {{ include('components/toc.html.twig', {'namespaces': node.children}) }}
+    </div>
+{% endblock %}

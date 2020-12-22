@@ -1,0 +1,57 @@
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
+
+.card .table {
+    margin-bottom: 0;
+}
+
+.w-col-mod {
+    min-width: 150px;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+/**
+ * Sidebar
+ */
+.sidebar-header {
+    font-weight: bold;
+}
+
+abbr[title],
+abbr[data-original-title] {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '\\';
+}
+
+dd > .list-inline,
+.list-inline.types {
+    margin-bottom: 0;
+}
+
+.list-inline-item:not(:last-child):after {
+    content: ",";
+}
+
+.list-inline.types > .list-inline-item:not(:last-child):after {
+    content: "|";
+}
+
+.list-inline.types > .list-inline-item:not(:last-child) {
+    margin-right: 0;
+}
+
+.card > .nav-tabs {
+    padding: 1rem;
+    padding-bottom: 0;
+}

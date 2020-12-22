@@ -1,0 +1,23 @@
+{% include 'components/breadcrumbs.html.twig' %}
+
+<h1>{{ node.name }}</h1>
+<p>
+    <span class="badge badge-success">
+        TRAIT
+    </span>
+</p>
+
+{% if node.usedTraits is not empty %}
+    <dl class="row">
+        <dt class="col-sm-2">uses</dt>
+        <dd class="col-sm-10">
+            <ul class="list-inline">
+                {% for trait in node.usedTraits %}
+                    <li class="list-inline-item">{{ trait|route('class:short') }}</li>
+                {% endfor %}
+            </ul>
+        </dd>
+    </dl>
+{% endif %}
+
+<hr>

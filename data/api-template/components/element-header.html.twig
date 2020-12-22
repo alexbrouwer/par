@@ -1,0 +1,14 @@
+{{ include('components/summary.html.twig') }}
+{{ include('components/description.html.twig') }}
+{{ include('components/tags.html.twig', {node: node}) }}
+
+{% if usesPackages %}
+    <dl class="row">
+        <dt class="col-sm-2">Packages</dt>
+        <ul class="list-inline">
+            {% for breadcrumb in packages(node) %}
+                <li class="list-inline-item"><a href="{{ link(breadcrumb) }}">{{ breadcrumb.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </dl>
+{% endif %}

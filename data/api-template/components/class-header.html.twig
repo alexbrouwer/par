@@ -1,0 +1,47 @@
+{% include 'components/breadcrumbs.html.twig' %}
+
+<h1>{{ node.name }}</h1>
+<p>
+    {% if node.abstract %}
+        <span class="badge badge-secondary">
+        ABSTRACT
+    </span>
+    {% endif %}
+    {% if node.final %}
+        <span class="badge badge-secondary">
+        FINAL
+    </span>
+    {% endif %}
+    <span class="badge badge-success">
+        CLASS
+    </span>
+</p>
+{% if node.parent or node.interfaces is not empty or node.usedTraits is not empty %}
+    <dl class="row">
+        {% if node.parent %}
+            <dt class="col-sm-2">extends</dt>
+            <dd class="col-sm-10">{{ node.parent|route('class:short') }}</dd>
+        {% endif %}
+        {% if node.interfaces is not empty %}
+            <dt class="col-sm-2">implements</dt>
+            <dd class="col-sm-10">
+                <ul class="list-inline">
+                    {% for interface in node.interfaces %}
+                        <li class="list-inline-item">{{ interface|route('class:short') }}</li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        {% endif %}
+        {% if node.usedTraits is not empty %}
+            <dt class="col-sm-2">uses</dt>
+            <dd class="col-sm-10">
+                <ul class="list-inline">
+                    {% for trait in node.usedTraits %}
+                        <li class="list-inline-item">{{ trait|route('class:short') }}</li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        {% endif %}
+    </dl>
+{% endif %}
+<hr>

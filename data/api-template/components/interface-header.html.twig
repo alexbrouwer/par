@@ -1,0 +1,20 @@
+{% include 'components/breadcrumbs.html.twig' %}
+
+<h1>{{ node.name }}</h1>
+<p>
+    <span class="badge badge-success">
+        INTERFACE
+    </span>
+</p>
+
+{% if node.parent and node.parent is not empty %}
+    <dl class="row">
+        <dt class="col-sm-2">extends</dt>
+        <ul class="list-inline">
+            {% for interface in node.parent %}
+                <li class="list-inline-item">{{ interface|route('class:short') }}</li>
+            {% endfor %}
+        </ul>
+    </dl>
+{% endif %}
+<hr>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <name>api-template</name>
+    <author>Alex Brouwer</author>
+    <email>brouwer.alexander@gmail.com</email>
+    <version>1.0.0</version>
+    <transformations>
+        <transformation writer="twig" source="index.html.twig" artifact="index.html"/>
+        <transformation writer="twig" query="indexes.namespaces" source="namespace.html.twig"/>
+        <transformation writer="twig" query="indexes.packages" source="package.html.twig"/>
+        <transformation writer="twig" query="indexes.classes" source="class.html.twig"/>
+        <transformation writer="twig" query="indexes.interfaces" source="interface.html.twig"/>
+        <transformation writer="twig" query="indexes.traits" source="trait.html.twig"/>
+        <transformation query="copy" writer="FileIo" source="js" artifact="js"/>
+        <transformation query="copy" writer="FileIo" source="css" artifact="css"/>
+    </transformations>
+    <parameters>
+        <parameter key="twig-debug">true</parameter>
+    </parameters>
+</template>

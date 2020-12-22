@@ -1,0 +1,16 @@
+{% set breadcrumbs = usesNamespaces ? breadcrumbs(node) : packages(node) %}
+{% if breadcrumbs is not empty %}
+    <nav aria-label="breadcrumb" class="row navbar navbar-light">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs %}
+                {% if breadcrumb.name == "PAR" %}
+                    <li class="breadcrumb-item"><a href="{{ path('/') }}">{{ breadcrumb.name }}</a></li>
+                {% elseif loop.last %}
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ link(breadcrumb) }}">{{ breadcrumb.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item"><a href="{{ link(breadcrumb) }}">{{ breadcrumb.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+{% endif %}

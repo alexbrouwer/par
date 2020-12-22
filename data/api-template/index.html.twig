@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        {% set node = project.namespace %}
+
+        {% for node in project.namespace.children %}
+            {% include 'components/namespace-header.html.twig' %}
+            {{ include(
+                'components/toc.html.twig',
+                {
+                    'node': node,
+                    'namespaces': usesNamespaces or not usesPackages ? node.children : [],
+                    'packages': usesPackages ? project.package.children : []
+                }
+            ) }}
+        {% endfor %}
+    </div>
+{% endblock %}

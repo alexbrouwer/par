@@ -1,0 +1,17 @@
+<header class="sticky-top">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-lg d-flex justify-content-between">
+            <a href="{{ path('/') }}" class="navbar-brand d-flex align-items-center">
+                <strong>{{ project.name }}</strong>
+            </a>
+            <form class="form-inline mt-2 mt-md-0">
+                <div class="input-group mr-sm-2">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
